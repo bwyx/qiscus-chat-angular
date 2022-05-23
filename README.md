@@ -1,5 +1,6 @@
 # QiscusChatAngular
 
+- [x] comment reply
 - [x] using sass, no bracket
 - [x] unit tests
 
