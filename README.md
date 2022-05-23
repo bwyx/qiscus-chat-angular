@@ -1,5 +1,23 @@
 # QiscusChatAngular
 
+- [x] using sass, no bracket
+- [x] unit tests
+
+## 1. Requirement Flow
+- [x] user A can login,
+- [x] user B can login,
+- [ ] user A/B create chat room,
+- [x] user A send text message with user B,
+- [ ] user B send image to user A.
+
+## 2. Komponen utama yang harus ada
+- [x] List Chat/List chat room - <[lobby.view.ts](https://github.com/bwyx/qiscus-chat-angular/blob/main/src/app/views/lobby/lobby.view.ts)/>
+- [x] Input Text - <[ChatInputForm.component.ts](https://github.com/bwyx/qiscus-chat-angular/blob/main/src/app/ChatInputForm/ChatInputForm.component.ts)/>
+- [x] Message List - <[chat.view.ts](https://github.com/bwyx/qiscus-chat-angular/blob/main/src/app/views/chat/chat.view.ts)/>
+
+### Screenshot
+<img src="https://user-images.githubusercontent.com/37757388/169917262-c8d486e5-7fab-45b7-a6f6-43e67f39bdb6.png" width=30%>
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
 
 ## Development server
