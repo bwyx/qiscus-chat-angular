@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { QiscusService } from './qiscus.service';
 
@@ -8,14 +8,7 @@ describe('QiscusService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        {
-          provide: Router,
-          useValue: {
-            navigate: jasmine.createSpy('navigate'),
-          },
-        },
-      ],
+      imports: [RouterTestingModule],
     });
     service = TestBed.inject(QiscusService);
   });

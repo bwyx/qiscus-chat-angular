@@ -30,4 +30,16 @@ describe('ChatInpuFormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call qiscus.sendMessage() when submit', () => {
+    const qiscusService = TestBed.inject(QiscusService);
+    const { message } = component.messageForm.value;
+
+    component.handleSendMessage(new Event('submit'));
+
+    expect(qiscusService.sendMessage).toHaveBeenCalledWith(
+      component.roomId || 0,
+      message
+    );
+  });
 });
