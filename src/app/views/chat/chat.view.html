@@ -1,0 +1,12 @@
+<ul style="padding-bottom: 10rem">
+  <li *ngFor="let comments of comments">
+    <text-bubble
+      [text]="comments.message"
+      [received]="comments.email !== userEmail"
+      [time]="comments.time"
+      [status]="comments.status"
+      [type]="comments.type"
+      [payload]="comments.payload"
+    ></text-bubble>
+  </li>
+</ul>

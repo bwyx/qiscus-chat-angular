@@ -1,0 +1,64 @@
+<div
+  [ngClass]="{
+    'text-bubble': true,
+    'text-bubble--left': received,
+    'text-bubble--right': !received
+  }"
+>
+  <div class="content">
+    <div *ngIf="type === 'reply'">
+      <div class="replied-comment">
+        <span *ngIf="payload.replied_comment_type === 'text'">
+          {{ payload.replied_comment_message }}
+        </span>
+
+        <figure *ngIf="payload.replied_comment_type === 'file_attachment'">
+          <a
+            [href]="payload.replied_comment_payload.url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img [src]="payload.replied_comment_payload.url" alt="alt" />
+          </a>
+          <figcaption>{{ payload.replied_comment_payload.caption }}</figcaption>
+        </figure>
+      </div>
+
+      <span>{{ text }}</span>
+    </div>
+
+    <span *ngIf="type === 'text'">
+      {{ text }}
+    </span>
+
+    <figure *ngIf="type === 'file_attachment'">
+      <a [href]="payload.url" target="_blank" rel="noopener noreferrer">
+        <img [src]="payload.url" alt="alt" />
+      </a>
+      <figcaption>{{ payload.caption }}</figcaption>
+    </figure>
+  </div>
+
+  <div class="message-meta">
+    <time>{{ time }}</time>
+    <span
+      *ngIf="!received"
+      [class]="{
+        'message-meta__status--sending': status === 'sending',
+        'message-meta__status--pending': status === 'pending',
+        'message-meta__status--sent': status === 'sent',
+        'message-meta__status--delivered': status === 'delivered',
+        'message-meta__status--read': status === 'read',
+        'message-meta__status--failed': status === 'failed'
+      }"
+    >
+      <svg viewBox="0 0 16 15" width="16" height="15">
+        <path
+          fill="currentColor"
+          d="m15.01 3.316-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"
+        ></path>
+      </svg>
+      <span style="opacity: 0; width: 0; height: 0;visibility: hidden;">Message Meta Status Icon</span>
+    </span>
+  </div>
+</div>

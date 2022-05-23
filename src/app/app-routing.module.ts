@@ -14,6 +14,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./views/lobby/lobby.module').then((m) => m.LobbyModule),
   },
+  {
+    path: 'chat',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./views/chat/chat.module').then((m) => m.ChatModule),
+  },
 ];
 
 @NgModule({

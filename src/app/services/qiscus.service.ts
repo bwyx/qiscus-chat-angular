@@ -4,16 +4,21 @@ import QiscusSDK from 'qiscus-sdk-core';
 
 const KEY = 'user';
 
+interface User {
+  email: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class QiscusService {
-  private qiscus: QiscusSDK;
+  client: QiscusSDK;
+  user: User | null = null;
 
-  constructor(router: Router) {
-    this.qiscus = new QiscusSDK();
+  constructor(private router: Router) {
+    this.client = new QiscusSDK();
 
-    this.qiscus.init({
+    this.client.init({
       AppId: 'sdksample',
       options: {
         loginSuccessCallback({ user }: any) {
@@ -35,7 +40,8 @@ export class QiscusService {
     if (savedUser) {
       try {
         const user = savedUser ? JSON.parse(savedUser) : null;
-        this.qiscus.setUserWithIdentityToken({ user });
+        this.client.setUserWithIdentityToken({ user });
+        this.user = user;
       } catch (e) {
         localStorage.removeItem(KEY);
       }
@@ -43,19 +49,16 @@ export class QiscusService {
   }
 
   isAuthenticated() {
-    return this.qiscus.isLogin;
+    return this.client.isLogin;
   }
 
   login(userId: string, userName: string, userKey: string) {
-    return this.qiscus.setUser(userId, userName, userKey);
+    return this.client.setUser(userId, userName, userKey);
   }
 
   logout() {
-    this.qiscus.disconnect();
+    this.client.disconnect();
     localStorage.removeItem(KEY);
-  }
-
-  loadRoomList(opts: { page: number; limit: number }): Promise<any> {
-    return this.qiscus.loadRoomList(opts);
+    this.router.navigate(['/']);
   }
 }

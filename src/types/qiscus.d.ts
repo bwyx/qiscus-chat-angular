@@ -23,11 +23,12 @@ declare module 'qiscus-sdk-core' {
       avatarURL?: string,
       extras?: Record<string, string | number | boolean>
     ) => Promise<void>;
+    setUserWithIdentityToken: (user: any) => Promise<void>;
 
     disconnect(): void;
 
     loadRoomList: (opts: { page: number; limit: number }) => Promise<any>;
-    setUserWithIdentityToken: (user: any) => Promise<void>;
+    getRoomById: (roomId: string) => Promise<any>;
 
     [key: string]: any;
   }

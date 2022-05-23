@@ -1,6 +1,8 @@
-<div *ngFor="let room of rooms">
-  {{room.name}}
-</div>
+ <ul>
+  <li *ngFor="let room of rooms">
+    <a routerLink="/chat" [queryParams]="{room: room.id}" routerLinkActive="active">{{room.name}}</a>
+  </li>
+</ul>
 <button (click)="handleLogout($event)">
   Logout
 </button>

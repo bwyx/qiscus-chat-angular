@@ -1,0 +1,49 @@
+.text-bubble
+  display: flex
+  align-items: end
+  padding: .5rem 1rem
+  max-width: 80%
+  font-size: 0.875rem
+  border-radius: 1rem
+  color: #fff
+  img
+    border-radius: .5rem
+  .replied-comment
+    padding: .5rem
+    border-radius: 1rem
+  &--left
+    float: left
+    background: #383a36
+    border-bottom-left-radius: 0
+    .replied-comment
+      background: #79740e
+  &--right
+    float: right
+    background: #79740e
+    border-bottom-right-radius: 0
+    .replied-comment
+      background: #383a36
+
+.message-meta
+  display: flex
+  align-items: center
+  gap: .25rem
+  padding: 0 0.5rem
+  float: right
+  margin-right: -10px
+  time
+    font-size: 0.75rem
+    color: #fff
+    opacity: 0.35
+  &__status
+    &--failed, &--pending
+      color: #f00
+    &--read
+      color: #00ffff
+    &--sent
+      color: #fff
+      opacity: 0.35
+    &--sending
+      color: #ff00ff
+    &--delivered
+      color: #ffff00

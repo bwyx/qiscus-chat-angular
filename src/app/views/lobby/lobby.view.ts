@@ -12,7 +12,7 @@ export class LobbyView implements OnInit {
   constructor(private qiscusService: QiscusService) {}
 
   ngOnInit(): void {
-    this.qiscusService
+    this.qiscusService.client
       .loadRoomList({ page: 1, limit: 10 })
       .then((rooms: any) => {
         this.rooms = rooms;
@@ -21,7 +21,6 @@ export class LobbyView implements OnInit {
 
   handleLogout(e: Event) {
     e.preventDefault();
-    console.log(e);
 
     this.qiscusService.logout();
   }
