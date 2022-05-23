@@ -30,6 +30,14 @@ declare module 'qiscus-sdk-core' {
     loadRoomList: (opts: { page: number; limit: number }) => Promise<any>;
     getRoomById: (roomId: string) => Promise<any>;
 
+    sendComment: (
+      roomId: number,
+      message: string,
+      messageId?: string | null,
+      type?: 'text' | 'file_attachment',
+      payload?: any
+    ) => Promise<any>;
+
     [key: string]: any;
   }
 }

@@ -1,4 +1,8 @@
 <ul style="padding-bottom: 10rem">
+  <chat-input-form [roomId]="roomId"></chat-input-form>
+  <li *ngIf="comments.length === 0">
+    <p class="no-coments">No comments yet</p>
+  </li>
   <li *ngFor="let comments of comments">
     <text-bubble
       [text]="comments.message"

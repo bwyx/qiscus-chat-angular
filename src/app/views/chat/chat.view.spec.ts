@@ -50,4 +50,13 @@ describe('ChatComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render "no comments yet" if no comments', () => {
+    component.comments = [];
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.no-coments').textContent).toContain(
+      'No comments yet'
+    );
+  });
 });

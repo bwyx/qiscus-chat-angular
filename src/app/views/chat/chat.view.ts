@@ -8,6 +8,7 @@ import { QiscusService } from 'src/app/services/qiscus.service';
   styleUrls: ['./chat.view.sass'],
 })
 export class ChatView implements OnInit {
+  roomId!: number;
   comments: any[] = [];
   userEmail?: string;
 
@@ -25,6 +26,8 @@ export class ChatView implements OnInit {
       window.history.back();
       return;
     }
+
+    this.roomId = Number(roomId);
 
     this.qiscusService.client.getRoomById(roomId).then((rooms) => {
       console.log(rooms);

@@ -1,0 +1,4 @@
+<form [formGroup]="messageForm" (submit)="handleSendMessage($event)">
+  <input type="text" formControlName="message" placeholder="Type a message...">
+  <button>Send</button>
+</form>

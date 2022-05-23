@@ -8,6 +8,8 @@ interface User {
   email: string;
 }
 
+type CommentType = 'text' | 'file_attachment';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -60,5 +62,16 @@ export class QiscusService {
     this.client.disconnect();
     localStorage.removeItem(KEY);
     this.router.navigate(['/']);
+  }
+
+  sendMessage(
+    rooomId: number,
+    message: string,
+    type?: CommentType,
+    payload?: any
+  ) {
+    console.log('send message', message);
+
+    this.client.sendComment(rooomId, message, null, type, payload);
   }
 }
